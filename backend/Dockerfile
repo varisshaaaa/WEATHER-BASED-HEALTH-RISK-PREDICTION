@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Set environment variable for OpenWeatherMap API key
-ENV OPENWEATHER_API_KEY=your_api_key_here
+ENV OPENWEATHER_API_KEY=65fddd647c737e3e1150b146c2c9defa
 
 # Expose port
 EXPOSE 8000
