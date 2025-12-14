@@ -1,20 +1,21 @@
 # Use official Python image
 FROM python:3.11-slim
 
-# Set workdir
+# Set working directory
 WORKDIR /app
 
-# Copy requirements
+# Copy requirements and install
 COPY requirements.txt .
-
-# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy app code
+# Copy the rest of the backend code
 COPY . .
+
+# Set environment variable for OpenWeatherMap API key
+ENV OPENWEATHER_API_KEY=your_api_key_here
 
 # Expose port
 EXPOSE 8000
 
-# Run the app
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run FastAPI with uvicorn
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
